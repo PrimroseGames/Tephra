@@ -84,6 +84,11 @@ ReadAccessMask DescriptorBinding::getReadAccessMask() const {
         ReadAccess::ComputeShaderSampled,
         ReadAccess::ComputeShaderUniform,
     };
+    static constexpr ReadAccess meshAccesses[] = {
+        ReadAccess::MeshShaderStorage,
+        ReadAccess::MeshShaderSampled,
+        ReadAccess::MeshShaderUniform,
+    };
 
     bool aliasStorageImage = flags.contains(DescriptorBindingFlag::AliasStorageImage);
     int accessTypeIndex;
@@ -130,6 +135,9 @@ ReadAccessMask DescriptorBinding::getReadAccessMask() const {
     }
     if (stageMask.contains(ShaderStage::Compute)) {
         accesses |= computeAccesses[accessTypeIndex];
+    }
+    if (stageMask.contains(ShaderStage::Mesh)) {
+        accesses |= meshAccesses[accessTypeIndex];
     }
 
     return accesses;

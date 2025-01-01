@@ -178,7 +178,9 @@ enum class ShaderStage : uint32_t {
     /// The fragment shader stage.
     Fragment = VK_SHADER_STAGE_FRAGMENT_BIT,
     /// The compute shader stage.
-    Compute = VK_SHADER_STAGE_COMPUTE_BIT
+    Compute = VK_SHADER_STAGE_COMPUTE_BIT,
+    /// The mesh shader stage.
+    Mesh = VK_SHADER_STAGE_MESH_BIT_NV,
 };
 TEPHRA_VULKAN_COMPATIBLE_ENUM(ShaderStage, VkShaderStageFlagBits);
 TEPHRA_MAKE_ENUM_BIT_MASK(ShaderStageMask, ShaderStage);

@@ -186,6 +186,10 @@ void GraphicsPipelineInfoBuilder::preallocateShaderStages(
                 &specConstantCount,
                 &specConstantBytes);
         }
+        if (pipelineSetup->meshStageSetup.stageModule != nullptr) {
+            countShaderSetup(
+                pipelineSetup->meshStageSetup, &shaderSetupCount, &specConstantCount, &specConstantBytes);
+        }
     }
     shaderStageInfoBuilder.preallocate(shaderSetupCount, specConstantCount, specConstantBytes);
 }
@@ -209,6 +213,10 @@ ArrayView<VkPipelineShaderStageCreateInfo> GraphicsPipelineInfoBuilder::makeShad
         shaderStageInfoBuilder.makeInfo(
             pipelineSetup->tessellationEvaluationStageSetup, ShaderStage::TessellationEvaluation);
         stageCount += 2;
+    }
+    if (pipelineSetup->meshStageSetup.stageModule != nullptr) {
+        shaderStageInfoBuilder.makeInfo(pipelineSetup->meshStageSetup, ShaderStage::Mesh);
+        stageCount++;
     }
 
     return ArrayView<VkPipelineShaderStageCreateInfo>(stagePtr, stageCount);

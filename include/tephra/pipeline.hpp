@@ -563,6 +563,7 @@ private:
     ShaderStageSetup geometryStageSetup;
     ShaderStageSetup tessellationControlStageSetup;
     ShaderStageSetup tessellationEvaluationStageSetup;
+    ShaderStageSetup meshStageSetup;
     uint32_t patchControlPoints = 0;
 
     Format depthStencilAttachmentFormat = Format::Undefined;

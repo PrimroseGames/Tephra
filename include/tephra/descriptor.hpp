@@ -66,6 +66,13 @@ enum class ReadAccess : uint64_t {
     /// Compute shader read access through uniform buffer descriptors.
     ComputeShaderUniform = 1 << 23,
 
+    /// Mesh shader read access through storage descriptors.
+    MeshShaderStorage = 1 << 24,
+    /// Mesh shader read access through sampled descriptors.
+    MeshShaderSampled = 1 << 25,
+    /// Mesh shader read access through uniform buffer descriptors.
+    MeshShaderUniform= 1 << 26,
+
     /// Image present operation access through tp::Device::submitPresentImagesKHR.
     ImagePresentKHR = 1ull << 62,
 
