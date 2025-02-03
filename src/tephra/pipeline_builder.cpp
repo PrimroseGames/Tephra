@@ -498,12 +498,12 @@ VkPipelineRenderingCreateInfo* GraphicsPipelineInfoBuilder::makeRenderingState(
     createInfo.pColorAttachmentFormats = vkCastConvertibleEnumPtr(pipelineSetup->colorAttachmentFormats.data());
 
     if (pipelineSetup->depthStencilAspects.contains(ImageAspect::Depth))
-        createInfo.depthAttachmentFormat = vkCastConvertibleEnum(pipelineSetup->depthStencilAttachmentFormat);
+        createInfo.depthAttachmentFormat = (VkFormat)(pipelineSetup->depthStencilAttachmentFormat);
     else
         createInfo.depthAttachmentFormat = VK_FORMAT_UNDEFINED;
 
     if (pipelineSetup->depthStencilAspects.contains(ImageAspect::Stencil))
-        createInfo.stencilAttachmentFormat = vkCastConvertibleEnum(pipelineSetup->depthStencilAttachmentFormat);
+        createInfo.stencilAttachmentFormat = (VkFormat)(pipelineSetup->depthStencilAttachmentFormat);
     else
         createInfo.stencilAttachmentFormat = VK_FORMAT_UNDEFINED;
 

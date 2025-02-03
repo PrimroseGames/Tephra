@@ -252,6 +252,8 @@ public:
     /// Returns the memory location that the image has been allocated from.
     MemoryLocation getMemoryLocation() const;
 
+    ImageUsage getUsage() const;
+
     /// Returns the default tp::ImageView object that views the entire image subresource range with
     /// the same format and an identity component mapping.
     const ImageView& getDefaultView() const;

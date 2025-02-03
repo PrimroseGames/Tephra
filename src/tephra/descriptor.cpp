@@ -14,7 +14,8 @@ enum class Descriptor::ResourceType {
     Image = 2,
     CombinedImageSampler = 3,
     Buffer = 4,
-    TexelBufferView = 5
+    TexelBufferView = 5,
+    AccelerationStructure = 6,
 };
 
 DescriptorBinding::DescriptorBinding()
@@ -468,6 +469,8 @@ Descriptor::ResourceType getExpectedResourceType(DescriptorType descriptorType) 
         return Descriptor::ResourceType::Buffer;
     case DescriptorType::StorageBufferDynamic:
         return Descriptor::ResourceType::Buffer;
+    case DescriptorType::AccelerationStructure:
+        return Descriptor::ResourceType::AccelerationStructure;
     default:
         TEPHRA_ASSERT(descriptorType == IgnoredDescriptorType);
         return Descriptor::ResourceType::None;

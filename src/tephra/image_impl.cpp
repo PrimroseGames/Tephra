@@ -22,6 +22,7 @@ ImageImpl::ImageImpl(
     canHaveVulkanViews = imageSetup.usage.containsAny(
         ImageUsage::SampledImage | ImageUsage::StorageImage | ImageUsage::ColorAttachment |
         ImageUsage::DepthStencilAttachment | ImageUsage::InputAttachment);
+    imageUsage = (ImageUsage)imageSetup.usage;
 
     createView_(defaultView.setup);
     vkDefaultViewHandle = viewHandleMap[defaultView.setup];

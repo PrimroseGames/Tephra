@@ -179,6 +179,11 @@ MemoryLocation Image::getMemoryLocation() const {
     return imageImpl->getMemoryLocation_();
 }
 
+ImageUsage Image::getUsage() const {
+    auto imageImpl = static_cast<const ImageImpl*>(this);
+    return imageImpl->getUsage();
+}
+
 const ImageView& Image::getDefaultView() const {
     auto imageImpl = static_cast<const ImageImpl*>(this);
     return imageImpl->getDefaultView_();

@@ -98,6 +98,10 @@ public:
     TEPHRA_MAKE_NONMOVABLE(ImageImpl);
     ~ImageImpl();
 
+    inline ImageUsage getUsage() const {
+        return imageUsage;
+    }
+
 private:
     friend class ImageView;
 
@@ -114,6 +118,7 @@ private:
 
     ImageView defaultView;
     bool canHaveVulkanViews;
+    ImageUsage imageUsage;
     ImageViewHandleMap viewHandleMap;
     VkImageViewHandle vkDefaultViewHandle;
 };

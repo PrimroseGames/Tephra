@@ -282,19 +282,19 @@ void RenderPass::prepareInheritance(const RenderPassSetup& setup) {
         bool hasStencil = hasImage && attachment.image.getWholeRange().aspectMask.contains(ImageAspect::Stencil);
 
         if (hasDepth) {
-            vkInheritanceRenderingInfo.depthAttachmentFormat = vkCastConvertibleEnum(attachment.image.getFormat());
+            vkInheritanceRenderingInfo.depthAttachmentFormat = (VkFormat)(attachment.image.getFormat());
         } else {
             vkInheritanceRenderingInfo.depthAttachmentFormat = VK_FORMAT_UNDEFINED;
         }
 
         if (hasStencil) {
-            vkInheritanceRenderingInfo.stencilAttachmentFormat = vkCastConvertibleEnum(attachment.image.getFormat());
+            vkInheritanceRenderingInfo.stencilAttachmentFormat = (VkFormat)(attachment.image.getFormat());
         } else {
             vkInheritanceRenderingInfo.stencilAttachmentFormat = VK_FORMAT_UNDEFINED;
         }
 
         if (hasImage) {
-            vkInheritanceRenderingInfo.rasterizationSamples = vkCastConvertibleEnum(attachment.image.getSampleLevel());
+            vkInheritanceRenderingInfo.rasterizationSamples = (VkSampleCountFlagBits)(attachment.image.getSampleLevel());
         }
     }
 

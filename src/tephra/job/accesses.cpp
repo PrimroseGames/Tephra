@@ -17,6 +17,7 @@ VkImageLayout vkGetImageLayoutForDescriptor(DescriptorType descriptorType, bool 
     case DescriptorType::StorageBuffer:
     case DescriptorType::UniformBufferDynamic:
     case DescriptorType::StorageBufferDynamic:
+    case DescriptorType::AccelerationStructure:
     case DescriptorType::Sampler:
     default:
         return VK_IMAGE_LAYOUT_UNDEFINED;
