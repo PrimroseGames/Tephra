@@ -49,6 +49,7 @@ void JobLocalDescriptorSets::allocatePreparedDescriptorSets() {
     for (std::size_t i = 0; i < setsToAllocate.size(); i++) {
         const SetToAllocate& setInfo = setsToAllocate[i];
         descriptorSetSetups.emplace_back(viewRange(resolvedDescriptors, descriptorIndex, setInfo.descriptorCount));
+        descriptorSetSetups[i].flags = DescriptorSetFlag::IgnoreNullDescriptors;
         descriptorIndex += setInfo.descriptorCount;
 
         bool isLastSet = i == setsToAllocate.size() - 1;
